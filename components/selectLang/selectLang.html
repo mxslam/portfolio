@@ -1,0 +1,189 @@
+<style>
+  .lang_container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+
+  /* Style du label */
+  #label_lang {
+    user-select: none;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Styles pour le sélecteur personnalisé */
+  #select_lang {
+    user-select: none;
+    appearance: none;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    background-color: #f4f4f4;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    max-width: 120px;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #select_lang:hover {
+    border-color: var(--custom-cyan);
+  }
+
+  /* Taille réduite pour les drapeaux */
+  #select_lang img,
+  .option_item img {
+    width: 20px;
+    height: auto;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* Styles pour la flèche du sélecteur */
+  #select_lang::after {
+    content: '▼';
+    font-size: 12px;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+  }
+
+  /* Styles pour la liste déroulante */
+  .options_container {
+    margin: 2px 0px;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: auto;
+    max-width: 120px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    z-index: 100;
+    width: 100%;
+  }
+
+  .options_container.open {
+    display: block;
+  }
+
+  .option_item {
+    user-select: none;
+    overflow: hidden;
+    padding: 8px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.3s ease;
+  }
+
+  .option_item:hover {
+    color: #fff;
+  }
+
+  /* Couleurs spécifiques au survol */
+  .option_item[data-value='fr']:hover {
+    background-color: #0055a4; /* Bleu du drapeau français */
+  }
+
+  .option_item[data-value='en']:hover {
+    background-color: #00247d; /* Bleu du drapeau britannique */
+  }
+
+  .option_item[data-value='jp']:hover {
+    background-color: #bc002d; /* Rouge du drapeau japonais */
+  }
+
+  .option_item[data-value='ru']:hover {
+    background-color: #d52b1e; /* Rouge du drapeau russe */
+  }
+
+  .option_item[data-value='zh']:hover {
+    background-color: #6f0303; /* Rouge du drapeau chinois */
+  }
+</style>
+
+<template>
+  <div class="lang_container">
+    <label for="select_lang" id="label_lang">Langue</label>
+    <div id="select_lang">
+      <!-- Valeur par défaut définie en fonction de NavigatorLang -->
+    </div>
+    <div class="options_container" id="options_container">
+      <div class="option_item" data-value="fr">
+        <img src="/img/fr.png" alt="Français" /> FR
+      </div>
+      <div class="option_item" data-value="en">
+        <img src="/img/en.png" alt="English" /> EN
+      </div>
+      <div class="option_item" data-value="jp">
+        <img src="/img/jp.png" alt="日本語" /> JP
+      </div>
+      <div class="option_item" data-value="ru">
+        <img src="/img/ru.png" alt="Русский" /> RU
+      </div>
+      <div class="option_item" data-value="zh">
+        <img src="/img/zh.png" alt="中文" /> ZH
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  (() => {
+    const selectLang = document.getElementById('select_lang');
+    const optionsContainer = document.getElementById('options_container');
+    const optionItems = document.querySelectorAll('.option_item');
+
+    selectLang.addEventListener('click', () => {
+      optionsContainer.classList.toggle('open');
+    });
+
+    optionItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        selectLang.innerHTML = item.innerHTML; // Met à jour avec le drapeau et la langue
+        optionsContainer.classList.remove('open');
+        changeLanguage(item.getAttribute('data-value'));
+      });
+    });
+
+    // Ferme le menu déroulant si on clique en dehors
+    document.addEventListener('click', (e) => {
+      if (
+        !selectLang.contains(e.target) &&
+        !optionsContainer.contains(e.target)
+      ) {
+        optionsContainer.classList.remove('open');
+      }
+    });
+
+    const defaultOption = document.querySelector(
+      `.option_item[data-value="${NavigatorLang}"]`
+    );
+    if (defaultOption) {
+      selectLang.innerHTML = defaultOption.innerHTML;
+    } else {
+      selectLang.innerHTML = document.querySelector(
+        '.option_item[data-value="en"]'
+      ).innerHTML; // Défaut à EN si aucune correspondance
+    }
+  })();
+</script>

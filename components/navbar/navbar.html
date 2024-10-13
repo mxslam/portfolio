@@ -1,0 +1,141 @@
+<style>
+  .nav-placeholder {
+    display: block;
+    width: 100%;
+    height: 80px;
+    background-color: var(--background-color);
+  }
+
+  nav {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  nav span {
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    color: var(--text-color);
+    padding: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+  }
+
+  nav span:hover {
+    color: var(--text-hover-color);
+    background-color: var(--background-color);
+  }
+
+  #burger {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: whitesmoke;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    user-select: none;
+  }
+
+  #close-btn {
+    display: none;
+  }
+
+  @media screen and (max-width: 670px) {
+    #burger {
+      display: block;
+    }
+
+    nav {
+      padding: 0px;
+      position: fixed;
+      top: 0;
+      left: -200%;
+      flex-direction: column;
+      background-color: var(--background-color);
+      width: 100%;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+      z-index: 9;
+    }
+
+    nav.active {
+      left: 0%;
+    }
+
+    nav span {
+      margin: 20px 0;
+    }
+
+    #close-btn {
+      display: none;
+      z-index: 10;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+  }
+</style>
+
+<template>
+  <span id="burger">&#9776;</span>
+  <span id="close-btn">&#10005;</span>
+  <nav id="menu">
+    <span id="nav_home">Accueil</span>
+  </nav>
+  <div class="nav-placeholder"></div>
+</template>
+
+<script>
+  (() => {
+    const nav_home = document.getElementById('nav_home');
+
+    nav_home.addEventListener('click', () => {
+      LoadHomePage();
+      console.log('worked');
+    });
+
+    const burger = document.getElementById('burger');
+    const closeBtn = document.getElementById('close-btn');
+    const nav = document.getElementById('menu');
+    const header = document.getElementsByTagName('header')[0];
+
+    function OpenOrCloseMenu() {
+      if (closeBtn.style.display != 'block') {
+        nav.classList.add('active');
+        closeBtn.style.display = 'block';
+        header.style.position = 'fixed';
+      } else {
+        nav.classList.remove('active');
+        closeBtn.style.display = 'none';
+        header.style.position = 'absolute';
+      }
+    }
+
+    burger.addEventListener('click', function () {
+      OpenOrCloseMenu();
+    });
+
+    closeBtn.addEventListener('click', function () {
+      OpenOrCloseMenu();
+    });
+  })();
+</script>
