@@ -17,6 +17,9 @@ function ChangeURL(path) {
     const spinnercontainer = document.getElementById('spinner-container');
     if (spinnercontainer) {
         spinnercontainer.style.display = 'none';
+        document.body.offsetHeight;
+        document.body.style.animation = 'fadeInRadial 0.4s forwards';
+        document.body.offsetHeight;
     }
 }
 function ClearContent(element) {

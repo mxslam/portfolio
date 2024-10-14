@@ -36,7 +36,12 @@ async function ImportComponent(name, dir = 'body', prepend = false) {
         }
         if (script) {
             const newScript = document.createElement('script');
-            newScript.textContent = script.textContent;
+            if (script.src) {
+                newScript.src = script.src;
+            }
+            else {
+                newScript.textContent = script.textContent;
+            }
             document.body.appendChild(newScript);
         }
     }

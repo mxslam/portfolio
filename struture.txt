@@ -1,0 +1,24 @@
+Accueil : Mini présentation de qui je suis
+
+Projets :
+Sites Wordpress
+Jeux
+Applications Web
+Appplications Mobile
+
+liste des projets :
+Floresia Intemporel
+23UL
+Bulles.space
+SpaceTchat
+? Prochain jeu
+Extension wordpress
+
+Expériences : mes experiences professionnelles mode résine, 
+
+Inspirations : Mes inspirations, philosophies, open source devs etc,
+
+M-slam est un pseudo que j'utilise depuis l'enfance, mon vrai prénom est Sofian, j'ai 27 ans, je suis un développeur français, j'ai commencé le développement par du visual basic, ayant grandi avec la N64 la ps1 et la gamecube j'ai toujours voulu créer des jeux en m'inspirant des jeux Nintendo, je me souviens que j'appréciait beaucoup les jeux où on avait accès à un éditeur de niveau, nottament avec TimeSplitter 2, j'ai par la suite commencé à faire des jeux avec RPG Maker 2003/XP, à la fin du Lycée en 2017 j'ai voulu entreprendre moi meme la création de jeux, j'ai appris à apprendre seul avec les informations sur internet, faire des recherches de manière efficace, utiliser les bons outils, les bonnes manipulations, j'ai commencé mon parcours en utilise Gdevelop 4 un logiciel dans la continuité de RPG maker pour développer ses propres jeux, j'ai ensuite réalisé des jeux nottamenet Floresia Intemporel qui aura été mon premier projet, et par la suite 23UL, j'ai ensuite continuer dans le développement web grace à des formations et je code principalement avec des technologies web, je maitrise aussi bien le front-end que le back-end,  HTML, CSS, JS, TS, PHP, SQL, je suis capable de concevoir un site web ou une application mobile de sa conception à sa finalisation
+
+
+

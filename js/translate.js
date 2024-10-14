@@ -13,4 +13,9 @@ async function translateDocument() {
   document.querySelector('#contact_text') &&
     (document.querySelector('#contact_text').textContent =
       Lang('Contactez-moi'));
+
+  document.querySelector('#modal_content') &&
+    (document.querySelector('#modal_content').innerHTML = Lang(
+      'Presentation Contenu'
+    ));
 }
