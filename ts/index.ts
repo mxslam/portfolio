@@ -28,7 +28,7 @@ async function ImportComponent(
     const tempContainer = document.createElement('div');
     tempContainer.innerHTML = htmlContent;
 
-    // Récupère le template
+    // Récupère le template, le style, et le script
     const template = tempContainer.querySelector('template');
     const style = tempContainer.querySelector('style');
     const script = tempContainer.querySelector('script');
@@ -53,11 +53,17 @@ async function ImportComponent(
       document.head.appendChild(style.cloneNode(true));
     }
 
-    // Si un script est présent, crée un nouvel élément script et l'ajoute
+    // Si un script est présent, recrée le script pour qu'il soit exécuté
     if (script) {
       const newScript = document.createElement('script');
-      newScript.textContent = script.textContent; // Transfère le contenu du script
-      document.body.appendChild(newScript); // Ajoute dynamiquement le script dans le body
+      if (script.src) {
+        // Si le script a un attribut src, utilise-le pour garantir l'exécution
+        newScript.src = script.src;
+      } else {
+        // Sinon, copie le contenu du script
+        newScript.textContent = script.textContent;
+      }
+      document.body.appendChild(newScript);
     }
   } catch (error) {
     console.error("Erreur lors de l'import du fichier HTML :", error);

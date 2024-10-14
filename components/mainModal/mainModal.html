@@ -15,53 +15,39 @@
     );
     width: 100%;
     max-width: 800px;
+    height: 600px;
+    overflow: auto;
     min-height: 600px;
-    border: 6px solid #efefef;
+    border: 6px solid #777777;
     border-radius: 3px;
     transition: 0.1s;
   }
 
   #modal:hover {
-    border-color: var(--custom-cyan);
+    border-color: var(--selection);
+  }
+
+  #title_modal,
+  #modal_content {
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
   #title_modal {
-    font-size: 43px;
-    font-weight: 300;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  #modal_content {
+    letter-spacing: 2px;
+    font-style: italic;
   }
 </style>
 
 <template>
   <div id="modal">
     <h1 id="title_modal"></h1>
-    <div id="modal_content">Bienvenue sur la page d'accueil</div>
+    <div id="modal_content"></div>
   </div>
 </template>
 
-<script>
-  (() => {
-    const modalTitle = document.getElementById('title_modal');
-    const modalContent = document.getElementById('modal_content');
-
-    function updateModalContent() {
-      page = getRoute();
-      console.log(page);
-      switch (page) {
-        case 'accueil':
-        default:
-          modalTitle.textContent = 'Accueil';
-          modalContent.textContent = "Bienvenue sur la page d'accueil";
-          break;
-        case 'projets':
-          modalTitle.textContent = 'Projets';
-          modalContent.textContent = 'Détails du projet sélectionné.';
-          break;
-      }
-    }
-
-    updateModalContent();
-
-    document.addEventListener('click', updateModalContent);
-    window.addEventListener('popstate', updateModalContent); // Gère les retours en arrière
-  })();
-</script>
+<script src="/components/mainModal/script.js"></script>
