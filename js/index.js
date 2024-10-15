@@ -48,4 +48,4 @@ async function ImportComponent(name, dir = 'body', prepend = false) {
     catch (error) {
         console.error("Erreur lors de l'import du fichier HTML :", error);
     }
-}
+} 

@@ -2,6 +2,7 @@
 
 <template>
   <link rel="stylesheet" href="/components/mainView/mainView.css" />
+
   <div class="center_title">
     <div class="title_section">
       <h1 id="Mslam">M-slam</h1>
@@ -20,12 +21,7 @@
         <li onclick="window.open('https://github.com/mxslam')">Github</li>
         <li>Remerciements</li>
 
-        <li
-          id="contact_text"
-          onclick="location.href='mailto:mxslam@protonmail.com'"
-        >
-          Contactez-moi
-        </li>
+        <li id="contact_text" onclick="location.href='mailto:mxslam@protonmail.com'">Contactez-moi</li>
       </ul>
     </div>
   </section>
@@ -34,5 +30,12 @@
 <script>
   (() => {
     ImportComponent('mainModal', '.main_container', true);
+
+    document.querySelectorAll('.menu_right li').forEach((item) => {
+      item.addEventListener('click', () => {
+        item.classList.add('active');
+        setTimeout(() => item.classList.remove('active'), 300); // Durée de l'animation
+      });
+    });
   })();
 </script>

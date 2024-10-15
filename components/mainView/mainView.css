@@ -9,6 +9,7 @@
 .menu_right:hover {
   border-color: var(--selection);
 }
+
 .menu_right {
   transition: 0.1s;
   margin: 10px;
@@ -17,19 +18,13 @@
   justify-content: flex-start;
   align-items: flex-start;
   background: rgb(0, 52, 191);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 52, 191, 1) 7%,
-    rgba(2, 45, 150, 1) 62%,
-    rgba(0, 29, 70, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(0, 52, 191, 1) 7%, rgba(2, 45, 150, 1) 62%, rgba(0, 29, 70, 1) 100%);
   width: 100%;
   max-width: 400px;
   min-height: 600px;
   border: 6px solid #777777;
   border-radius: 3px;
 }
-
 .menu_right li {
   text-decoration: none;
   color: white;
@@ -39,19 +34,35 @@
   font-weight: 10;
   list-style-type: none;
   cursor: pointer;
-  transition: 0.1s;
+  transition: transform 0.2s, border 0.2s ease;
   user-select: none;
 }
 
+@media only screen and (max-width: 1350px) {
+  .menu_right {
+    max-width: 200px;
+  }
+  .menu_right li {
+    font-size: 20px;
+  }
+}
+
 .menu_right li:hover {
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
   background: white;
   color: black;
   font-weight: bold;
-  width: 100%;
-  padding: 15px;
+}
+
+.menu_right li.active {
+  transform: scale(0.95);
+  background: none;
+  color: white;
+  border: 6px solid white; /* Bordure initiale épaisse */
+  transition: border 0.3s ease-out, transform 0.2s ease-out;
+}
+
+.menu_right li.active {
+  border-width: 1px; /* Retour à la bordure normale */
 }
 
 .list_menu_right {
