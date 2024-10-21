@@ -39,7 +39,7 @@
   padding: 0;
 }
 ::selection {
-  background: var(--custom-cyan);
+  background: rgb(0, 89, 255);
 }
 
 body,
